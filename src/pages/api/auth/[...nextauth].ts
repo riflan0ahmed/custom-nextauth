@@ -46,6 +46,9 @@ export const authOptions = {
       clientSecret: process.env.GITHUB_SECRET as string,
     }),
   ],
+  pages: {
+    signIn: "/auth/credentials-signin",
+  },
   callbacks: {
     async jwt({ token, account }: any) {
       // Persist the OAuth access_token to the token right after signin
