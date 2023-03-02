@@ -63,5 +63,9 @@ export const authOptions = {
       return session;
     },
   },
+  secret: '951268437',
+  jwt: {
+    secret: '951268437',
+  },
 };
 export default NextAuth(authOptions);
