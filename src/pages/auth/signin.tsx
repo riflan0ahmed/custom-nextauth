@@ -14,7 +14,7 @@ export default function SignIn({ csrfToken }: InferGetServerSidePropsType<typeof
     formState: { errors },
   } = useForm<Inputs>();
 
-  const onSubmit: SubmitHandler<Inputs> = async (formData, e) => {
+  const onSubmit: SubmitHandler<Inputs> = async (formData) => {
     await signIn('credentials', { ...formData });
   };
 

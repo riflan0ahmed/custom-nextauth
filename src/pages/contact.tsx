@@ -1,9 +1,9 @@
+import { useSession, signOut } from 'next-auth/react';
 import { useRouter } from 'next/router';
-import { useSession } from 'next-auth/react';
 import Head from 'next/head';
 import Link from 'next/link';
 
-export default function Home() {
+const Contact = () => {
   const router = useRouter();
 
   const { status, data: session } = useSession({
@@ -25,11 +25,21 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="container mx-auto flex flex-col gap-4 items-center h-screen">
-        <h1 className=" text-4xl text-black">Successfully logged in {session.user.name}</h1>
-        <Link href={'/auth/profile'}>Profile</Link>
-        <Link href={'/contact'}>Contact</Link>
+
+      <div className="container mx-auto flex flex-col gap-4 items-center">
+        <h1 className=" text-4xl text-black">Welcome to the Contact us page {session.user?.name}</h1>
+        <br />
+        <img src={session.user.image} alt="" height={200} width={200} />
+        <Link href={'/'}>Back</Link>
+        <button
+          onClick={() => signOut()}
+          className="bg-red-500 capitalize w-40 text-white font-semibold p-2 rounded-md"
+        >
+          Sign out
+        </button>
       </div>
     </>
   );
-}
+};
+
+export default Contact;
